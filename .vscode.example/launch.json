@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
-            "env": {"PYTHONPATH":"./src;./test;./"}
+            "env": {"PYTHONPATH":"./src;./test;./","DMI_API_KEY":"xxx"}
         }
     ]
 }

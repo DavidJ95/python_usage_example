@@ -1,3 +1,6 @@
 numpy<2.0.0
 pandas<2.1.0
 datetime
+requests
+dmi-open-data
+matplotlib
