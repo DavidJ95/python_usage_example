@@ -1,5 +1,29 @@
 import datetime
 import json
+import re
+
+def parse_date_txt(txt_search):
+    """_summary_
+
+    :param txt_search: Date entered as text. It may be in the form yyyy-mm-dd, refdate+nn, or today+nn
+    :type txt_search: string
+    :param ref_date: reference date given as datetime. Defaults to None
+    :type ref_date: string, optional
+    :return: return a datetime if expression valid, otherwise None
+    :rtype: datetime
+    """
+    date_ = None
+    m = re.match(
+        '(20[0-9][0-9])-((0[1-9])|(1[0-2]))-(0[1-9]|[1-2][0-9]|3[0-1])$', txt_search)
+    if m is None:
+        m = re.match('(today)([+\-]?\d*)$', txt_search)
+        if m is not None:  # m[0] != m[1] and
+            date_ = datetime.datetime.combine(
+                datetime.date.today() + datetime.timedelta(days=int(m[2] or 0)), datetime.datetime.min.time())  # int(m[2])
+            return date_
+    # date_ = datetime.strptime(m[0], '%Y-%m-%d')
+    # date_ = local_tz.localize(date_).astimezone(utc_tz)
+    return parse_date(txt_search)
 
 
 def parse_date(date):

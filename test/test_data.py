@@ -1,19 +1,15 @@
-import requests
-import json
 import pandas as pd
-import pytz
-from dmi_open_data import DMIOpenDataClient, Parameter, ClimateDataParameter
-import os
 import datetime
-print(os.getcwd())
-print(os.getenv('PYTHONPATH'))
-import data_reader
+import data_reader as dr
+from dmi_open_data import  Parameter
 import matplotlib.pyplot as plt
+import utils
 
 
-fd=datetime.datetime(2024,8,1,0,0,0)
-td=datetime.datetime(2024,9,1,0,0,0)
-data_reader=data_reader.DataReader()
+
+fd=utils.parse_date_txt('today-30')
+td=utils.parse_date_txt('today-10')
+data_reader=dr.DataReader()
 df_energinet, df_energinet_properties = data_reader.production_data(from_date=fd, 
                         to_date=td, 
                         price_area='DK2')
@@ -36,6 +32,7 @@ df_stat=df_energinet.query(''' property=='OnshoreWindGe50kW_MWh' ''').rename(col
         merge(df_observations.rename(columns={'value':'wind_speed'}), on='fromDatetime')
 df_corr=df_stat.groupby(['station_name'])[['production','wind_speed']].corr().reset_index().query(''' level_1 == 'production' ''').sort_values('wind_speed').reset_index()
 
+df_corr.to_excel('test/correlations.xlsx')
 station = df_corr.loc[0]['station_name']
 df_graph= df_stat.query(''' station_name == @station ''')
 plt.scatter(df_graph['wind_speed'],df_graph['production'])

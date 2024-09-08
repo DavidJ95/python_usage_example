@@ -4,3 +4,4 @@ datetime
 requests
 dmi-open-data
 matplotlib
+openpyxl

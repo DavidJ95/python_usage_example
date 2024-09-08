@@ -10,8 +10,19 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}",
-            "env": {"PYTHONPATH":"./src;./test;./","DMI_API_KEY":"xxx"}
+            "env":{"PYTHONPATH":"${workspaceFolder}/src","DMI_API_KEY":"XXX"},
+            "cwd":"${workspaceFolder}"
+        },
+        {
+            "name": "wind_prod",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/wind_prod",
+            "console": "integratedTerminal",
+            "env":{"PYTHONPATH":"${workspaceFolder}/src","DMI_API_KEY":"XXX"},
+            "cwd":"${workspaceFolder}",
+            "args": ["-f","2024-01-01","-t","today-10"]
         }
+
     ]
 }
