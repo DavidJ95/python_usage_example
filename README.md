@@ -16,12 +16,12 @@ code .
 Man kan nu gå i gang med at debugge programmerne test/test_data.py og main programmet src/wind_prod.
 
 Hvis man vil køre wind_prod programmet fra en bash terminal (windows), så skal man følgende fra en bash terminal i projekt rod:
-
+```
 source src/.venv/script/activate
 export PYTHONPATH=src
 export DMI_API_KEY=xxx (erstat xxx med ens Dmi api key)
 python src/wind_prod -f 2024-07-01 -t today-5
-
+```
 Output ligger i test folderen og indeholder regneark med korrelationer mellem DMI målestationer observation for vindhastighed og DK2 vindproduktion for vindmøller med en kapacitet på over 50 KW.
 Der ligger også to scatterplot. Det ene viser den målestation, der korreler dårligst med DK2 produktionen, mens det andet med den målestation, der har den bedste korrelation.
 
