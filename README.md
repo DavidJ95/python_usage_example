@@ -9,7 +9,7 @@ Hvis man hellere vil bruge en powershell eller en kommandoterminal, skal man nok
 cp -rf .vscode_example .vscode
 3. Start vscode med kommandoen:
 code .
-4. I code tryk "ctrl+shift+p" og søg efter ens python fil i det virtuelle miljø, der lige er dannet i src/.venv
+4. I code tryk "ctrl+shift+p" efterfulgt "Python: select interpreter" og søg efter ens python fil i det virtuelle miljø, der lige er dannet i src/.venv
 5. Man skal nu have fat i en api nøgle fra DMI, der kan bruges på deres observationsdata (der henvises til https://opendatadocs.dmi.govcloud.dk/DMIOpenData).
 6. Denne nøgle kopieres ind i ens launch ud for "DMI_API_KEY"
 

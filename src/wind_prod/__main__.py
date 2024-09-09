@@ -73,7 +73,7 @@ def main(argv):
 
         df_observations=pd.DataFrame()
         for idx, dmi_station in df_stations.iterrows():
-            print (dmi_station['properties.name'])
+            print(dmi_station['properties.name'],flush=True)
             df_ = data_reader.dmi_observations(from_date=fd,to_date=td, 
                 station_id=dmi_station['properties.stationId'],
                 station_name=dmi_station['properties.name'],
